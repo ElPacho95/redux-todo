@@ -1,17 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { useState } from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const initialState = [];
+
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "addTask":
+      return [...state, action.payload];
+    case "delete":
+      return state.filter((item) =>
+        action.payload === item.id ? false : true
+      );
+    // case "checked":
+    //   return 0
+    default:
+      return state;
+  }
+};
+const store = createStore(reducer);
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>
+  </Provider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
