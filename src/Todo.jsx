@@ -18,7 +18,6 @@ const Todo = () => {
       payload: {
         id: Math.random().toString(36).substr(2, 9),
         text: userInput,
-        done: check,
       },
     });
   };

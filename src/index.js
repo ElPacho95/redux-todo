@@ -15,8 +15,6 @@ const reducer = (state = initialState, action) => {
       return state.filter((item) =>
         action.payload === item.id ? false : true
       );
-    // case "checked":
-    //   return 0
     default:
       return state;
   }
