@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Todo = () => {
   const [userInput, setUserInput] = useState("");
-  const [check, setCheck] = useState(false);
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
